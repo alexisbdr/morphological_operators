@@ -97,14 +97,20 @@ def main() :
         img = cv.imread(path_to_image, 0)
         cv.imshow('normal/' + path_to_image, img)
         
-        img = dilation(img, kernel_11)
+        img = dilation(img, kernel_9)
         cv.imshow("dilated/" + path_to_image, img)
         
-        img = erosion(img, kernel_5)
+        img = erosion(img, kernel_11)
         cv.imshow('eroded/' + path_to_image, img)
         
+        img = dilation(img, kernel_9)
+        cv.imshow('eroded/' + path_to_image, img)
+                
         img = boundary(img)
         cv.imshow('border/' + path_to_image, img)
+        p = results_folder + 'boundary_' + image_file
+
+        cv.imwrite(p, img)
  
     
     key = cv.waitKey(0)
